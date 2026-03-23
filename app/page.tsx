@@ -1,11 +1,15 @@
+import {Button} from "@/components/ui/button";
+import Container from "@/components/ui/container";
 import React from "react";
 
 const Home = () => {
   return (
-    <div className="p-10 bg-cor-rosa-claro">
-      <h2 className="text-xl font-semibold">Home</h2>
-    </div>
+    <Container className="p-10 bg-cor-rosa-claro">
+      <h2 className="text-xl font-semibold">Página Inicial</h2>
+      <p> TEXTOTEXTOTEXTOTEXTOTEXTOTEXTO</p>
+      <Button> Teste </Button>
+    </Container>
   );
 };
 
-export default Home;
+export default Home; 

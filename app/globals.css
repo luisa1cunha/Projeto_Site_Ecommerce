@@ -7,17 +7,17 @@
 @theme {
   --font-poppins: Poppins, sans-serif;
 
-  --color-branco-fundo: #f6f6f6;
-  --color-cinza: #52525b;
-  --color-preto: #151515;
+  --color-branco_fundo: rgb(246, 246, 246);
+  --color-cinza: rgb(82, 82, 91);
+  --color-preto: rgb(21, 21, 21);
 
-  --color-verde-escuro: #063c2B;
-  --color-verde-claro: #3b9c3c;
+  --color-verde_escuro: rgb(6, 60, 43);
+  --color-ciano: rgb(86, 206, 194);
 
-  --color-laranja: #fb6c08;
-  --color-laranja-claro: #fca99b;
+  --color-laranja: rgb(251, 108, 8);
+  --color-laranja_claro: rgb(252, 169, 155);
 
-  --color-rosa-claro: #fcf0e4;
+  --color-rosa_claro: rgb(252, 240, 228);
 }
 
 @theme inline {
@@ -141,5 +141,8 @@
   }
   html {
     @apply font-sans;
+  }
+  .hoverEffect {
+    @apply transition-all duration-300 ease-in-out;
   }
 }
