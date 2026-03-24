@@ -1,5 +1,5 @@
 import {Button} from "@/components/ui/button";
-import Container from "@/components/ui/container";
+import Container from "@/components/container";
 import React from "react";
 import "./globals.css";
 

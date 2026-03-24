@@ -8,16 +8,12 @@
   --font-poppins: Poppins, sans-serif;
 
   --color-branco_fundo: rgb(240, 239, 224);
-  --color-cinza: rgb(220, 220, 220);
+  --color-cinza: rgb(200, 200, 200);
   --color-preto: rgb(21, 21, 21);
 
-  --color-verde_escuro: rgb(6, 60, 43);
   --color-ciano: rgb(86, 206, 194);
 
-  --color-laranja: rgb(251, 108, 8);
-  --color-laranja_claro: rgb(252, 169, 155);
-
-  --color-rosa_claro: rgb(252, 240, 228);
+  --color-amarelo: rgb(212, 152, 13);
 }
 
 @theme inline {
@@ -144,5 +140,8 @@
   }
   .hoverEffect {
     @apply transition-all duration-300 ease-in-out;
+  }
+  button{
+    @apply hover:cursor-pointer;
   }
 }
