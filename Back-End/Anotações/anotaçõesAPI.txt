@@ -1,0 +1,31 @@
+DEFINIÇÃO:
+São rotas que retorna alguma coisa, serve para envio e recebimento de informações.
+
+Métodos Http
+Get (Listar algo)
+Post (Criar algo)
+Put (Editar vários)
+patch (Editar UM)
+Delete (Deletar)
+
+Como usar uma rota
+1) Tipo de Rota / Metodo HTTP
+2) Endereço (/usuarios, /produtos...)
+
+Estutura de uma rota:
+Toda rota recebe uma requisição(req)
+E é enviado uma resposta(res)
+res.send('Ok, deu bom'), nesse estou enviando a resposta (Ok deu bom)
+
+Requisição:
+3 Tipos de requisição
+
+Query Params (GET): Colocar parametros na URL
+ -Como usar: ? Após o link define que vão começar os parametros e o & separa variaveis
+    Ex: localhost:3000/usuarios?nome=rafael&sobrenome=carneiro
+ -Obs: Usados em pesquisas (Não é seguro)
+
+Route Params (GET/PUT/DELETE): Acessar algo específico
+  -Ex: localhost:3000/usuarios/22 (Acessar o Usuario 22)
+
+Body Params (Post e Put): Enviar pelo corpo quando tiver muitas informações

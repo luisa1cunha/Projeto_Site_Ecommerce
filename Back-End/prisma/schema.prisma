@@ -1,0 +1,43 @@
+generator client {
+  provider = "prisma-client-js"
+  output   = "geracao"
+}
+
+datasource db {
+  provider = "postgresql"
+}
+
+model User {
+  nome        String
+  sobrenome   String?
+  email       String       @unique
+  id          String       @id @default(dbgenerated("gen_random_uuid()")) @db.Uuid
+  senhaHash   String       @default("")
+  createdAt   DateTime     @default(now())
+  updatedAt   DateTime     @default(now()) @updatedAt
+  requestLogs RequestLog[]
+}
+
+model camisasfutebol {
+  id      String @id @default(dbgenerated("gen_random_uuid()")) @db.Uuid
+  modelo  String
+  versao  String
+  tamanho String
+  ano     Int?
+}
+
+model RequestLog {
+  id         String   @id @default(dbgenerated("gen_random_uuid()")) @db.Uuid
+  method     String
+  path       String
+  statusCode Int
+  durationMs Int
+  ip         String?
+  userAgent  String?
+  userId     String?  @db.Uuid
+  createdAt  DateTime @default(now())
+  user       User?    @relation(fields: [userId], references: [id])
+
+  @@index([createdAt])
+  @@index([userId])
+}

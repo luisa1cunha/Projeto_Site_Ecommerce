@@ -1,0 +1,7 @@
+Para migrar o código do prisma com o banco de dados:
+npx prisma migrate dev --name migracao-inicial
+
+O primeiro usuário foi criado diretamente pelo banco 
+
+Tive problemas com a geração do arquivo generated para o uso do index.js (Arquivo que faz a migração do banco com o js)
+Foi necessário retornar a versão 6.7 e gerar a pasta com npx prisma generated

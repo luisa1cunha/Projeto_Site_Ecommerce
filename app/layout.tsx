@@ -1,8 +1,6 @@
 import type { Metadata } from "next";
 import "./globals.css";
-import { cn } from "@/lib/utils";
-import Header from "@/components/header";
-import Footer from "@/components/footer";
+import LayoutGlobal from "@/components/layoutglobal";
 
 export const metadata: Metadata = {
   title: "Teste site",
@@ -17,9 +15,7 @@ export default function RootLayout({
   return (
     <html lang="pt-br">
       <body className="font-poppins antialiased">
-        <Header />   
-        {children}
-        <Footer />
+        <LayoutGlobal>{children}</LayoutGlobal>
       </body>
     </html>
   );
