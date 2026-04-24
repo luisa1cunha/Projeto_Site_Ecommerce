@@ -4,8 +4,9 @@ import { ReactNode } from "react";
 import { usePathname } from "next/navigation";
 import Header from "@/components/header";
 import Footer from "@/components/footer";
+import { FavoritesProvider } from "@/components/favoritos-contexto";
 
-interface LayoutGlobalProps{
+interface LayoutGlobalProps {
   children: ReactNode;
 }
 
@@ -14,10 +15,10 @@ export default function LayoutGlobal({ children }: LayoutGlobalProps) {
   const semHeaderFooter = pathname === "/login" || pathname.startsWith("/auth");
 
   return (
-    <>
+    <FavoritesProvider>
       {!semHeaderFooter && <Header />}
       {children}
       {!semHeaderFooter && <Footer />}
-    </>
+    </FavoritesProvider>
   );
 }
