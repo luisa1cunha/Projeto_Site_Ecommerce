@@ -10,12 +10,12 @@ const Favoritos = () => {
 
   return (
     <Container className="p-5 bg-yellow-200">
-      <h2 className="text-xl font-semibold">FAVORITOS</h2>
-      <p className="text-sm mb-4">SEUS PRODUTOS FAVORITOS</p>
+      <h2 className="text-xl font-bold">FAVORITOS</h2>
+      <p className="text-sm mb-4 font-semibold">SEUS PRODUTOS FAVORITOS</p>
       
 
       {favoritosLista.length === 0 ? (
-        <p className="text-sm text-gray-700">Nenhum produto favorito adicionado ainda.</p>
+        <p className="text-sm text-black">Nenhum produto favorito adicionado ainda.</p>
       ) : (
         <div className="grid grid-cols-1 sm:grid-cols-4 gap-4">
           {favoritosLista.map((produto) => (
