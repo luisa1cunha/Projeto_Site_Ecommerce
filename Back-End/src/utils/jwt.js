@@ -9,6 +9,7 @@ export function gerarTokenAcesso(user) {
       sub: user.id,
       email: user.email,
       nome: user.nome,
+      role: user.role,
     },
     JWT_SECRET,
     { expiresIn: JWT_EXPIRES_IN },

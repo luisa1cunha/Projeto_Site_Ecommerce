@@ -1,0 +1,11 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="900" height="900" viewBox="0 0 900 900" role="img" aria-label="Camisa alvinegra">
+  <rect width="900" height="900" fill="#0f172a"/>
+  <g fill="#f8fafc">
+    <rect x="120" y="0" width="80" height="900"/>
+    <rect x="280" y="0" width="80" height="900"/>
+    <rect x="440" y="0" width="80" height="900"/>
+    <rect x="600" y="0" width="80" height="900"/>
+    <rect x="760" y="0" width="80" height="900"/>
+  </g>
+  <text x="450" y="820" text-anchor="middle" fill="#e2e8f0" font-size="48" font-family="Verdana">Alvinegra Retro</text>
+</svg>

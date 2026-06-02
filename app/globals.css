@@ -15,6 +15,11 @@
   --color-ciano_escuro: rgb(41, 105, 98);
 
   --color-amarelo: rgb(212, 152, 13);
+
+  --color-brand-ink: rgb(11, 19, 30);
+  --color-brand-coral: rgb(250, 121, 89);
+  --color-brand-cream: rgb(252, 248, 239);
+  --color-brand-mint: rgb(121, 224, 207);
 }
 
 @theme inline {
@@ -134,7 +139,13 @@
     @apply border-border outline-ring/50;
   }
   body {
-    @apply bg-background text-foreground;
+    @apply text-foreground;
+    background:
+      radial-gradient(circle at 20% 10%, rgba(121, 224, 207, 0.18), transparent 35%),
+      radial-gradient(circle at 80% 0%, rgba(250, 121, 89, 0.15), transparent 30%),
+      linear-gradient(180deg, #fcf8ef 0%, #f7f4ea 100%);
+    min-height: 100vh;
+    transition: background 260ms ease, color 260ms ease;
   }
   html {
     @apply font-sans;
@@ -144,5 +155,37 @@
   }
   button{
     @apply hover:cursor-pointer;
+  }
+
+  .dark body {
+    background:
+      radial-gradient(circle at 18% 8%, rgba(100, 116, 139, 0.16), transparent 30%),
+      radial-gradient(circle at 82% 0%, rgba(71, 85, 105, 0.14), transparent 24%),
+      linear-gradient(180deg, #0f1115 0%, #161a22 100%);
+  }
+}
+
+@layer components {
+  .surface-card {
+    @apply rounded-2xl border border-white/40 bg-white/75 shadow-xl shadow-black/5 backdrop-blur dark:border-slate-700/80 dark:bg-slate-900/75 dark:shadow-black/35;
+  }
+
+  .section-title {
+    @apply text-2xl font-black uppercase tracking-wide text-[rgb(11,19,30)] sm:text-3xl dark:text-slate-100;
+  }
+
+  .page-fade {
+    animation: pageFade 0.45s ease;
+  }
+}
+
+@keyframes pageFade {
+  from {
+    opacity: 0;
+    transform: translateY(10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
   }
 }

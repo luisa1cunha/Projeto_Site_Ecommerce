@@ -2,6 +2,10 @@ import bcrypt from 'bcryptjs'
 import { prisma } from '../../db.js'
 import { gerarTokenAcesso, obterExpiracaoToken } from '../../utils/jwt.js'
 
+function obterRoleSeguro(user) {
+  return user?.role || 'USER'
+}
+
 // Regra de negócio: registro
 export async function registrarUsuario({ nome, sobrenome, email, senha }) {
   // Normaliza para evitar duplicidade por diferença de maiúsculas/minúsculas.
@@ -32,7 +36,13 @@ export async function registrarUsuario({ nome, sobrenome, email, senha }) {
 
   return {
     status: 201,
-    body: { message: 'Usuario registrado com sucesso.', user: usuarioCriado },
+    body: {
+      message: 'Usuario registrado com sucesso.',
+      user: {
+        ...usuarioCriado,
+        role: 'USER',
+      },
+    },
   }
 }
 
@@ -52,7 +62,10 @@ export async function autenticarUsuario({ email, senha }) {
     return { status: 401, body: { error: 'Credenciais invalidas.' } }
   }
 
-  const token = gerarTokenAcesso(usuario)
+  const token = gerarTokenAcesso({
+    ...usuario,
+    role: obterRoleSeguro(usuario),
+  })
 
   return {
     status: 200,
@@ -66,6 +79,7 @@ export async function autenticarUsuario({ email, senha }) {
         nome: usuario.nome,
         sobrenome: usuario.sobrenome,
         email: usuario.email,
+        role: obterRoleSeguro(usuario),
       },
     },
   }

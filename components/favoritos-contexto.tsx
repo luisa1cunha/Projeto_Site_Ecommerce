@@ -10,23 +10,23 @@ import React, {
 } from "react";
 
 interface FavoritesContextValue {
-  favoritos: number[];
-  toggleFavorito: (id: number) => void;
-  isFavorito: (id: number) => boolean;
+  favoritos: string[];
+  toggleFavorito: (id: string) => void;
+  isFavorito: (id: string) => boolean;
 }
 
 const FavoritesContext = createContext<FavoritesContextValue | undefined>(undefined);
 
 export function FavoritesProvider({ children }: { children: React.ReactNode }) {
-  const [favoritos, setFavoritos] = useState<number[]>([]);
+  const [favoritos, setFavoritos] = useState<string[]>([]);
 
   useEffect(() => {
     try {
       const stored = window.localStorage.getItem("favoritos");
       if (stored) {
-        const parsed = JSON.parse(stored) as number[];
+        const parsed = JSON.parse(stored) as string[];
         if (Array.isArray(parsed)) {
-          setFavoritos(parsed);
+          setFavoritos(parsed.filter((item) => typeof item === "string"));
         }
       }
     } catch {
@@ -40,13 +40,13 @@ export function FavoritesProvider({ children }: { children: React.ReactNode }) {
     }
   }, [favoritos]);
 
-  const toggleFavorito = useCallback((id: number) => {
+  const toggleFavorito = useCallback((id: string) => {
     setFavoritos((current) =>
       current.includes(id) ? current.filter((favId) => favId !== id) : [...current, id]
     );
   }, []);
 
-  const isFavorito = useCallback((id: number) => favoritos.includes(id), [favoritos]);
+  const isFavorito = useCallback((id: string) => favoritos.includes(id), [favoritos]);
 
   const value = useMemo(
     () => ({ favoritos, toggleFavorito, isFavorito }),

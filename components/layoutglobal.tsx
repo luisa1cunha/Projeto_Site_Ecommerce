@@ -5,6 +5,8 @@ import { usePathname } from "next/navigation";
 import Header from "@/components/header";
 import Footer from "@/components/footer";
 import { FavoritesProvider } from "@/components/favoritos-contexto";
+import { CarrinhoProvider } from "@/components/carrinho-contexto";
+import { TemaProvider } from "@/components/tema-contexto";
 
 interface LayoutGlobalProps {
   children: ReactNode;
@@ -15,10 +17,14 @@ export default function LayoutGlobal({ children }: LayoutGlobalProps) {
   const semHeaderFooter = pathname === "/login" || pathname.startsWith("/auth");
 
   return (
-    <FavoritesProvider>
-      {!semHeaderFooter && <Header />}
-      {children}
-      {!semHeaderFooter && <Footer />}
-    </FavoritesProvider>
+    <TemaProvider>
+      <FavoritesProvider>
+        <CarrinhoProvider>
+          {!semHeaderFooter && <Header />}
+          {children}
+          {!semHeaderFooter && <Footer />}
+        </CarrinhoProvider>
+      </FavoritesProvider>
+    </TemaProvider>
   );
 }

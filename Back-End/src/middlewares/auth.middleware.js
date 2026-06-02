@@ -16,10 +16,21 @@ export function autenticarToken(req, res, next) {
       id: payload.sub,
       email: payload.email,
       nome: payload.nome,
+      role: payload.role,
     }
 
     return next()
   } catch {
     return res.status(401).json({ error: 'Token inválido ou expirado.' })
+  }
+}
+
+export function autorizarRoles(...rolesPermitidos) {
+  return function (req, res, next) {
+    if (!req.user?.role || !rolesPermitidos.includes(req.user.role)) {
+      return res.status(403).json({ error: 'Acesso negado para este perfil.' })
+    }
+
+    return next()
   }
 }

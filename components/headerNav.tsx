@@ -3,24 +3,35 @@ import React from "react";
 import { headerData } from "@/constants/data";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
+import { useEffect, useMemo, useState } from "react";
+import { usuarioEhAdmin } from "@/lib/userSession";
 
 const HeaderNav = () => {
   const pathname = usePathname();
+  const [admin, setAdmin] = useState(false);
+
+  useEffect(() => {
+    setAdmin(usuarioEhAdmin());
+  }, []);
+
+  const links = useMemo(() => {
+    if (!admin) return headerData;
+    return [...headerData, { title: "Admin", href: "/admin" }];
+  }, [admin]);
 
   return (
-    <div className="hidden md:inline-flex w-1/3 items-center gap-5 justify-center capitalize text-sm font-semibold text-light whitespace-nowrap">
-      {headerData?.map((item) => (
+    <div className="hidden h-11 w-fit max-w-full items-center justify-center gap-2 whitespace-nowrap px-2 text-sm font-semibold md:inline-flex md:justify-self-center">
+      {links?.map((item) => (
         <Link
           key={item?.title}
           href={item?.href}
-          className={`hover:text-ciano hoverEffect relative group font-family-poppins visited:text-light active:text-light ${
-            pathname === item?.href ? "text-ciano" : "text-black"}`}
+          className={`relative rounded-full px-3 py-1.5 capitalize hoverEffect ${
+            pathname === item?.href
+              ? "bg-ciano_escuro text-white dark:bg-ciano_escuro"
+              : "text-slate-700 hover:bg-slate-100 hover:text-ciano_escuro dark:text-slate-200 dark:hover:bg-slate-800 dark:hover:text-ciano"
+          }`}
         >
           {item?.title}
-          <span className={`absolute -bottom-0.5 left-1/2 w-0 h-0.5 bg-ciano group-hover:w-1/2 hoverEffect group-hover:left-0 ${
-            pathname === item?.href && "w-1/2"}`}></span>
-          <span className={`absolute -bottom-0.5 right-1/2 w-0 h-0.5 bg-ciano group-hover:w-1/2 hoverEffect group-hover:right-0 ${
-            pathname === item?.href && "w-1/2"}`}></span>
         </Link>
       ))}
     </div>

@@ -126,16 +126,24 @@ exports.Prisma.UserScalarFieldEnum = {
   email: 'email',
   id: 'id',
   senhaHash: 'senhaHash',
+  role: 'role',
   createdAt: 'createdAt',
   updatedAt: 'updatedAt'
 };
 
 exports.Prisma.CamisasfutebolScalarFieldEnum = {
   id: 'id',
+  nome: 'nome',
+  preco: 'preco',
+  time: 'time',
+  descricao: 'descricao',
+  imagens: 'imagens',
   modelo: 'modelo',
   versao: 'versao',
   tamanho: 'tamanho',
-  ano: 'ano'
+  ano: 'ano',
+  createdAt: 'createdAt',
+  updatedAt: 'updatedAt'
 };
 
 exports.Prisma.RequestLogScalarFieldEnum = {
@@ -164,7 +172,10 @@ exports.Prisma.NullsOrder = {
   first: 'first',
   last: 'last'
 };
-
+exports.UserRole = exports.$Enums.UserRole = {
+  USER: 'USER',
+  ADMIN: 'ADMIN'
+};
 
 exports.Prisma.ModelName = {
   User: 'User',

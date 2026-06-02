@@ -1,0 +1,7 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="900" height="900" viewBox="0 0 900 900" role="img" aria-label="Camisa rubro negra">
+  <rect width="900" height="900" fill="#111827"/>
+  <rect x="0" y="120" width="900" height="120" fill="#dc2626"/>
+  <rect x="0" y="360" width="900" height="120" fill="#dc2626"/>
+  <rect x="0" y="600" width="900" height="120" fill="#dc2626"/>
+  <text x="450" y="820" text-anchor="middle" fill="#f8fafc" font-size="48" font-family="Verdana">Rubro Negra 2026</text>
+</svg>

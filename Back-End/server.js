@@ -1,5 +1,7 @@
 import express from 'express'
 import cors from 'cors'
+import path from 'path'
+import { fileURLToPath } from 'url'
 import { authRouter } from './src/modules/auth/auth.routes.js'
 import { camisasRouter } from './src/modules/camisas/camisas.routes.js'
 import { usuariosRouter } from './src/modules/usuarios/usuarios.routes.js'
@@ -7,8 +9,14 @@ import { registrarRequisicoes } from './src/middlewares/request-log.middleware.j
 
 const app = express()
 
+const __filename = fileURLToPath(import.meta.url)
+const __dirname = path.dirname(__filename)
+
 // Middleware para parsear JSON no corpo das requests.
 app.use(express.json())
+
+// Exposição de uploads locais de imagens.
+app.use('/uploads', express.static(path.join(__dirname, 'uploads')))
 
 // CORS limitado ao Front-End. Em produção, definir FRONTEND_URL no ambiente.
 const allowedOrigins = [

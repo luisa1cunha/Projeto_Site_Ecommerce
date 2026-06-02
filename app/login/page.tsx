@@ -130,7 +130,11 @@ export default function PaginaLogin() {
 
       // salva dados do usuário
       if (dados.user) {
-        localStorage.setItem('perfil_usuario', JSON.stringify(dados.user))
+        const usuarioComRole = {
+          ...dados.user,
+          role: dados.user?.role === 'ADMIN' ? 'ADMIN' : 'USER',
+        }
+        localStorage.setItem('perfil_usuario', JSON.stringify(usuarioComRole))
       }
       setMensagem(`${dados.message || 'Login realizado com sucesso.'} Bem-vindo(a), ${dados.user?.nome ?? 'usuário'}.`)
 

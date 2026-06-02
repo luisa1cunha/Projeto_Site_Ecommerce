@@ -1,0 +1,6 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="900" height="900" viewBox="0 0 900 900" role="img" aria-label="Camisa azul royal">
+  <rect width="900" height="900" fill="#1d4ed8"/>
+  <circle cx="450" cy="360" r="180" fill="#f8fafc" fill-opacity="0.9"/>
+  <circle cx="450" cy="360" r="120" fill="#1d4ed8"/>
+  <text x="450" y="820" text-anchor="middle" fill="#f8fafc" font-size="48" font-family="Verdana">Azul Royal 26</text>
+</svg>

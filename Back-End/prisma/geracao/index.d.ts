@@ -30,6 +30,23 @@ export type camisasfutebol = $Result.DefaultSelection<Prisma.$camisasfutebolPayl
 export type RequestLog = $Result.DefaultSelection<Prisma.$RequestLogPayload>
 
 /**
+ * Enums
+ */
+export namespace $Enums {
+  export const UserRole: {
+  USER: 'USER',
+  ADMIN: 'ADMIN'
+};
+
+export type UserRole = (typeof UserRole)[keyof typeof UserRole]
+
+}
+
+export type UserRole = $Enums.UserRole
+
+export const UserRole: typeof $Enums.UserRole
+
+/**
  * ##  Prisma Client ʲˢ
  *
  * Type-safe database client for TypeScript & Node.js
@@ -1094,6 +1111,7 @@ export namespace Prisma {
     email: string | null
     id: string | null
     senhaHash: string | null
+    role: $Enums.UserRole | null
     createdAt: Date | null
     updatedAt: Date | null
   }
@@ -1104,6 +1122,7 @@ export namespace Prisma {
     email: string | null
     id: string | null
     senhaHash: string | null
+    role: $Enums.UserRole | null
     createdAt: Date | null
     updatedAt: Date | null
   }
@@ -1114,6 +1133,7 @@ export namespace Prisma {
     email: number
     id: number
     senhaHash: number
+    role: number
     createdAt: number
     updatedAt: number
     _all: number
@@ -1126,6 +1146,7 @@ export namespace Prisma {
     email?: true
     id?: true
     senhaHash?: true
+    role?: true
     createdAt?: true
     updatedAt?: true
   }
@@ -1136,6 +1157,7 @@ export namespace Prisma {
     email?: true
     id?: true
     senhaHash?: true
+    role?: true
     createdAt?: true
     updatedAt?: true
   }
@@ -1146,6 +1168,7 @@ export namespace Prisma {
     email?: true
     id?: true
     senhaHash?: true
+    role?: true
     createdAt?: true
     updatedAt?: true
     _all?: true
@@ -1229,6 +1252,7 @@ export namespace Prisma {
     email: string
     id: string
     senhaHash: string
+    role: $Enums.UserRole
     createdAt: Date
     updatedAt: Date
     _count: UserCountAggregateOutputType | null
@@ -1256,6 +1280,7 @@ export namespace Prisma {
     email?: boolean
     id?: boolean
     senhaHash?: boolean
+    role?: boolean
     createdAt?: boolean
     updatedAt?: boolean
     requestLogs?: boolean | User$requestLogsArgs<ExtArgs>
@@ -1268,6 +1293,7 @@ export namespace Prisma {
     email?: boolean
     id?: boolean
     senhaHash?: boolean
+    role?: boolean
     createdAt?: boolean
     updatedAt?: boolean
   }, ExtArgs["result"]["user"]>
@@ -1278,6 +1304,7 @@ export namespace Prisma {
     email?: boolean
     id?: boolean
     senhaHash?: boolean
+    role?: boolean
     createdAt?: boolean
     updatedAt?: boolean
   }, ExtArgs["result"]["user"]>
@@ -1288,11 +1315,12 @@ export namespace Prisma {
     email?: boolean
     id?: boolean
     senhaHash?: boolean
+    role?: boolean
     createdAt?: boolean
     updatedAt?: boolean
   }
 
-  export type UserOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"nome" | "sobrenome" | "email" | "id" | "senhaHash" | "createdAt" | "updatedAt", ExtArgs["result"]["user"]>
+  export type UserOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"nome" | "sobrenome" | "email" | "id" | "senhaHash" | "role" | "createdAt" | "updatedAt", ExtArgs["result"]["user"]>
   export type UserInclude<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     requestLogs?: boolean | User$requestLogsArgs<ExtArgs>
     _count?: boolean | UserCountOutputTypeDefaultArgs<ExtArgs>
@@ -1311,6 +1339,7 @@ export namespace Prisma {
       email: string
       id: string
       senhaHash: string
+      role: $Enums.UserRole
       createdAt: Date
       updatedAt: Date
     }, ExtArgs["result"]["user"]>
@@ -1742,6 +1771,7 @@ export namespace Prisma {
     readonly email: FieldRef<"User", 'String'>
     readonly id: FieldRef<"User", 'String'>
     readonly senhaHash: FieldRef<"User", 'String'>
+    readonly role: FieldRef<"User", 'UserRole'>
     readonly createdAt: FieldRef<"User", 'DateTime'>
     readonly updatedAt: FieldRef<"User", 'DateTime'>
   }
@@ -2192,69 +2222,111 @@ export namespace Prisma {
   }
 
   export type CamisasfutebolAvgAggregateOutputType = {
+    preco: number | null
     ano: number | null
   }
 
   export type CamisasfutebolSumAggregateOutputType = {
+    preco: number | null
     ano: number | null
   }
 
   export type CamisasfutebolMinAggregateOutputType = {
     id: string | null
+    nome: string | null
+    preco: number | null
+    time: string | null
+    descricao: string | null
     modelo: string | null
     versao: string | null
     tamanho: string | null
     ano: number | null
+    createdAt: Date | null
+    updatedAt: Date | null
   }
 
   export type CamisasfutebolMaxAggregateOutputType = {
     id: string | null
+    nome: string | null
+    preco: number | null
+    time: string | null
+    descricao: string | null
     modelo: string | null
     versao: string | null
     tamanho: string | null
     ano: number | null
+    createdAt: Date | null
+    updatedAt: Date | null
   }
 
   export type CamisasfutebolCountAggregateOutputType = {
     id: number
+    nome: number
+    preco: number
+    time: number
+    descricao: number
+    imagens: number
     modelo: number
     versao: number
     tamanho: number
     ano: number
+    createdAt: number
+    updatedAt: number
     _all: number
   }
 
 
   export type CamisasfutebolAvgAggregateInputType = {
+    preco?: true
     ano?: true
   }
 
   export type CamisasfutebolSumAggregateInputType = {
+    preco?: true
     ano?: true
   }
 
   export type CamisasfutebolMinAggregateInputType = {
     id?: true
+    nome?: true
+    preco?: true
+    time?: true
+    descricao?: true
     modelo?: true
     versao?: true
     tamanho?: true
     ano?: true
+    createdAt?: true
+    updatedAt?: true
   }
 
   export type CamisasfutebolMaxAggregateInputType = {
     id?: true
+    nome?: true
+    preco?: true
+    time?: true
+    descricao?: true
     modelo?: true
     versao?: true
     tamanho?: true
     ano?: true
+    createdAt?: true
+    updatedAt?: true
   }
 
   export type CamisasfutebolCountAggregateInputType = {
     id?: true
+    nome?: true
+    preco?: true
+    time?: true
+    descricao?: true
+    imagens?: true
     modelo?: true
     versao?: true
     tamanho?: true
     ano?: true
+    createdAt?: true
+    updatedAt?: true
     _all?: true
   }
 
@@ -2346,10 +2418,17 @@ export namespace Prisma {
 
   export type CamisasfutebolGroupByOutputType = {
     id: string
+    nome: string
+    preco: number
+    time: string
+    descricao: string
+    imagens: string[]
     modelo: string
     versao: string
     tamanho: string
     ano: number | null
+    createdAt: Date
+    updatedAt: Date
     _count: CamisasfutebolCountAggregateOutputType | null
     _avg: CamisasfutebolAvgAggregateOutputType | null
     _sum: CamisasfutebolSumAggregateOutputType | null
@@ -2373,47 +2452,82 @@ export namespace Prisma {
 
   export type camisasfutebolSelect<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
     id?: boolean
+    nome?: boolean
+    preco?: boolean
+    time?: boolean
+    descricao?: boolean
+    imagens?: boolean
     modelo?: boolean
     versao?: boolean
     tamanho?: boolean
     ano?: boolean
+    createdAt?: boolean
+    updatedAt?: boolean
   }, ExtArgs["result"]["camisasfutebol"]>
 
   export type camisasfutebolSelectCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
     id?: boolean
+    nome?: boolean
+    preco?: boolean
+    time?: boolean
+    descricao?: boolean
+    imagens?: boolean
     modelo?: boolean
     versao?: boolean
     tamanho?: boolean
     ano?: boolean
+    createdAt?: boolean
+    updatedAt?: boolean
   }, ExtArgs["result"]["camisasfutebol"]>
 
   export type camisasfutebolSelectUpdateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
     id?: boolean
+    nome?: boolean
+    preco?: boolean
+    time?: boolean
+    descricao?: boolean
+    imagens?: boolean
     modelo?: boolean
     versao?: boolean
     tamanho?: boolean
     ano?: boolean
+    createdAt?: boolean
+    updatedAt?: boolean
   }, ExtArgs["result"]["camisasfutebol"]>
 
   export type camisasfutebolSelectScalar = {
     id?: boolean
+    nome?: boolean
+    preco?: boolean
+    time?: boolean
+    descricao?: boolean
+    imagens?: boolean
     modelo?: boolean
     versao?: boolean
     tamanho?: boolean
     ano?: boolean
+    createdAt?: boolean
+    updatedAt?: boolean
   }
 
-  export type camisasfutebolOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "modelo" | "versao" | "tamanho" | "ano", ExtArgs["result"]["camisasfutebol"]>
+  export type camisasfutebolOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "nome" | "preco" | "time" | "descricao" | "imagens" | "modelo" | "versao" | "tamanho" | "ano" | "createdAt" | "updatedAt", ExtArgs["result"]["camisasfutebol"]>
 
   export type $camisasfutebolPayload<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     name: "camisasfutebol"
     objects: {}
     scalars: $Extensions.GetPayloadResult<{
       id: string
+      nome: string
+      preco: number
+      time: string
+      descricao: string
+      imagens: string[]
       modelo: string
       versao: string
       tamanho: string
       ano: number | null
+      createdAt: Date
+      updatedAt: Date
     }, ExtArgs["result"]["camisasfutebol"]>
     composites: {}
   }
@@ -2838,10 +2952,17 @@ export namespace Prisma {
    */
   interface camisasfutebolFieldRefs {
     readonly id: FieldRef<"camisasfutebol", 'String'>
+    readonly nome: FieldRef<"camisasfutebol", 'String'>
+    readonly preco: FieldRef<"camisasfutebol", 'Float'>
+    readonly time: FieldRef<"camisasfutebol", 'String'>
+    readonly descricao: FieldRef<"camisasfutebol", 'String'>
+    readonly imagens: FieldRef<"camisasfutebol", 'String[]'>
     readonly modelo: FieldRef<"camisasfutebol", 'String'>
     readonly versao: FieldRef<"camisasfutebol", 'String'>
     readonly tamanho: FieldRef<"camisasfutebol", 'String'>
     readonly ano: FieldRef<"camisasfutebol", 'Int'>
+    readonly createdAt: FieldRef<"camisasfutebol", 'DateTime'>
+    readonly updatedAt: FieldRef<"camisasfutebol", 'DateTime'>
   }
     
 
@@ -3041,7 +3162,7 @@ export namespace Prisma {
     /**
      * The data needed to create a camisasfutebol.
      */
-    data: XOR<camisasfutebolCreateInput, camisasfutebolUncheckedCreateInput>
+    data?: XOR<camisasfutebolCreateInput, camisasfutebolUncheckedCreateInput>
   }
 
   /**
@@ -4405,6 +4526,7 @@ export namespace Prisma {
     email: 'email',
     id: 'id',
     senhaHash: 'senhaHash',
+    role: 'role',
     createdAt: 'createdAt',
     updatedAt: 'updatedAt'
   };
@@ -4414,10 +4536,17 @@ export namespace Prisma {
 
   export const CamisasfutebolScalarFieldEnum: {
     id: 'id',
+    nome: 'nome',
+    preco: 'preco',
+    time: 'time',
+    descricao: 'descricao',
+    imagens: 'imagens',
     modelo: 'modelo',
     versao: 'versao',
     tamanho: 'tamanho',
-    ano: 'ano'
+    ano: 'ano',
+    createdAt: 'createdAt',
+    updatedAt: 'updatedAt'
   };
 
   export type CamisasfutebolScalarFieldEnum = (typeof CamisasfutebolScalarFieldEnum)[keyof typeof CamisasfutebolScalarFieldEnum]
@@ -4482,6 +4611,20 @@ export namespace Prisma {
 
 
   /**
+   * Reference to a field of type 'UserRole'
+   */
+  export type EnumUserRoleFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'UserRole'>
+    
+
+
+  /**
+   * Reference to a field of type 'UserRole[]'
+   */
+  export type ListEnumUserRoleFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'UserRole[]'>
+    
+
+
+  /**
    * Reference to a field of type 'DateTime'
    */
   export type DateTimeFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'DateTime'>
@@ -4492,20 +4635,6 @@ export namespace Prisma {
    * Reference to a field of type 'DateTime[]'
    */
   export type ListDateTimeFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'DateTime[]'>
-    
-
-
-  /**
-   * Reference to a field of type 'Int'
-   */
-  export type IntFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'Int'>
-    
-
-
-  /**
-   * Reference to a field of type 'Int[]'
-   */
-  export type ListIntFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'Int[]'>
     
 
 
@@ -4521,6 +4650,20 @@ export namespace Prisma {
    */
   export type ListFloatFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'Float[]'>
     
+
+
+  /**
+   * Reference to a field of type 'Int'
+   */
+  export type IntFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'Int'>
+    
+
+
+  /**
+   * Reference to a field of type 'Int[]'
+   */
+  export type ListIntFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'Int[]'>
+    
   /**
    * Deep Input Types
    */
@@ -4535,6 +4678,7 @@ export namespace Prisma {
     email?: StringFilter<"User"> | string
     id?: UuidFilter<"User"> | string
     senhaHash?: StringFilter<"User"> | string
+    role?: EnumUserRoleFilter<"User"> | $Enums.UserRole
     createdAt?: DateTimeFilter<"User"> | Date | string
     updatedAt?: DateTimeFilter<"User"> | Date | string
     requestLogs?: RequestLogListRelationFilter
@@ -4546,6 +4690,7 @@ export namespace Prisma {
     email?: SortOrder
     id?: SortOrder
     senhaHash?: SortOrder
+    role?: SortOrder
     createdAt?: SortOrder
     updatedAt?: SortOrder
     requestLogs?: RequestLogOrderByRelationAggregateInput
@@ -4560,6 +4705,7 @@ export namespace Prisma {
     nome?: StringFilter<"User"> | string
     sobrenome?: StringNullableFilter<"User"> | string | null
     senhaHash?: StringFilter<"User"> | string
+    role?: EnumUserRoleFilter<"User"> | $Enums.UserRole
     createdAt?: DateTimeFilter<"User"> | Date | string
     updatedAt?: DateTimeFilter<"User"> | Date | string
     requestLogs?: RequestLogListRelationFilter
@@ -4571,6 +4717,7 @@ export namespace Prisma {
     email?: SortOrder
     id?: SortOrder
     senhaHash?: SortOrder
+    role?: SortOrder
     createdAt?: SortOrder
     updatedAt?: SortOrder
     _count?: UserCountOrderByAggregateInput
@@ -4587,6 +4734,7 @@ export namespace Prisma {
     email?: StringWithAggregatesFilter<"User"> | string
     id?: UuidWithAggregatesFilter<"User"> | string
     senhaHash?: StringWithAggregatesFilter<"User"> | string
+    role?: EnumUserRoleWithAggregatesFilter<"User"> | $Enums.UserRole
     createdAt?: DateTimeWithAggregatesFilter<"User"> | Date | string
     updatedAt?: DateTimeWithAggregatesFilter<"User"> | Date | string
   }
@@ -4596,18 +4744,32 @@ export namespace Prisma {
     OR?: camisasfutebolWhereInput[]
     NOT?: camisasfutebolWhereInput | camisasfutebolWhereInput[]
     id?: UuidFilter<"camisasfutebol"> | string
+    nome?: StringFilter<"camisasfutebol"> | string
+    preco?: FloatFilter<"camisasfutebol"> | number
+    time?: StringFilter<"camisasfutebol"> | string
+    descricao?: StringFilter<"camisasfutebol"> | string
+    imagens?: StringNullableListFilter<"camisasfutebol">
     modelo?: StringFilter<"camisasfutebol"> | string
     versao?: StringFilter<"camisasfutebol"> | string
     tamanho?: StringFilter<"camisasfutebol"> | string
     ano?: IntNullableFilter<"camisasfutebol"> | number | null
+    createdAt?: DateTimeFilter<"camisasfutebol"> | Date | string
+    updatedAt?: DateTimeFilter<"camisasfutebol"> | Date | string
   }
 
   export type camisasfutebolOrderByWithRelationInput = {
     id?: SortOrder
+    nome?: SortOrder
+    preco?: SortOrder
+    time?: SortOrder
+    descricao?: SortOrder
+    imagens?: SortOrder
     modelo?: SortOrder
     versao?: SortOrder
     tamanho?: SortOrder
     ano?: SortOrderInput | SortOrder
+    createdAt?: SortOrder
+    updatedAt?: SortOrder
   }
 
   export type camisasfutebolWhereUniqueInput = Prisma.AtLeast<{
@@ -4615,18 +4777,32 @@ export namespace Prisma {
     AND?: camisasfutebolWhereInput | camisasfutebolWhereInput[]
     OR?: camisasfutebolWhereInput[]
     NOT?: camisasfutebolWhereInput | camisasfutebolWhereInput[]
+    nome?: StringFilter<"camisasfutebol"> | string
+    preco?: FloatFilter<"camisasfutebol"> | number
+    time?: StringFilter<"camisasfutebol"> | string
+    descricao?: StringFilter<"camisasfutebol"> | string
+    imagens?: StringNullableListFilter<"camisasfutebol">
     modelo?: StringFilter<"camisasfutebol"> | string
     versao?: StringFilter<"camisasfutebol"> | string
     tamanho?: StringFilter<"camisasfutebol"> | string
     ano?: IntNullableFilter<"camisasfutebol"> | number | null
+    createdAt?: DateTimeFilter<"camisasfutebol"> | Date | string
+    updatedAt?: DateTimeFilter<"camisasfutebol"> | Date | string
   }, "id">
 
   export type camisasfutebolOrderByWithAggregationInput = {
     id?: SortOrder
+    nome?: SortOrder
+    preco?: SortOrder
+    time?: SortOrder
+    descricao?: SortOrder
+    imagens?: SortOrder
     modelo?: SortOrder
     versao?: SortOrder
     tamanho?: SortOrder
     ano?: SortOrderInput | SortOrder
+    createdAt?: SortOrder
+    updatedAt?: SortOrder
     _count?: camisasfutebolCountOrderByAggregateInput
     _avg?: camisasfutebolAvgOrderByAggregateInput
     _max?: camisasfutebolMaxOrderByAggregateInput
@@ -4639,10 +4815,17 @@ export namespace Prisma {
     OR?: camisasfutebolScalarWhereWithAggregatesInput[]
     NOT?: camisasfutebolScalarWhereWithAggregatesInput | camisasfutebolScalarWhereWithAggregatesInput[]
     id?: UuidWithAggregatesFilter<"camisasfutebol"> | string
+    nome?: StringWithAggregatesFilter<"camisasfutebol"> | string
+    preco?: FloatWithAggregatesFilter<"camisasfutebol"> | number
+    time?: StringWithAggregatesFilter<"camisasfutebol"> | string
+    descricao?: StringWithAggregatesFilter<"camisasfutebol"> | string
+    imagens?: StringNullableListFilter<"camisasfutebol">
     modelo?: StringWithAggregatesFilter<"camisasfutebol"> | string
     versao?: StringWithAggregatesFilter<"camisasfutebol"> | string
     tamanho?: StringWithAggregatesFilter<"camisasfutebol"> | string
     ano?: IntNullableWithAggregatesFilter<"camisasfutebol"> | number | null
+    createdAt?: DateTimeWithAggregatesFilter<"camisasfutebol"> | Date | string
+    updatedAt?: DateTimeWithAggregatesFilter<"camisasfutebol"> | Date | string
   }
 
   export type RequestLogWhereInput = {
@@ -4728,6 +4911,7 @@ export namespace Prisma {
     email: string
     id?: string
     senhaHash?: string
+    role?: $Enums.UserRole
     createdAt?: Date | string
     updatedAt?: Date | string
     requestLogs?: RequestLogCreateNestedManyWithoutUserInput
@@ -4739,6 +4923,7 @@ export namespace Prisma {
     email: string
     id?: string
     senhaHash?: string
+    role?: $Enums.UserRole
     createdAt?: Date | string
     updatedAt?: Date | string
     requestLogs?: RequestLogUncheckedCreateNestedManyWithoutUserInput
@@ -4750,6 +4935,7 @@ export namespace Prisma {
     email?: StringFieldUpdateOperationsInput | string
     id?: StringFieldUpdateOperationsInput | string
     senhaHash?: StringFieldUpdateOperationsInput | string
+    role?: EnumUserRoleFieldUpdateOperationsInput | $Enums.UserRole
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
     requestLogs?: RequestLogUpdateManyWithoutUserNestedInput
@@ -4761,6 +4947,7 @@ export namespace Prisma {
     email?: StringFieldUpdateOperationsInput | string
     id?: StringFieldUpdateOperationsInput | string
     senhaHash?: StringFieldUpdateOperationsInput | string
+    role?: EnumUserRoleFieldUpdateOperationsInput | $Enums.UserRole
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
     requestLogs?: RequestLogUncheckedUpdateManyWithoutUserNestedInput
@@ -4772,6 +4959,7 @@ export namespace Prisma {
     email: string
     id?: string
     senhaHash?: string
+    role?: $Enums.UserRole
     createdAt?: Date | string
     updatedAt?: Date | string
   }
@@ -4782,6 +4970,7 @@ export namespace Prisma {
     email?: StringFieldUpdateOperationsInput | string
     id?: StringFieldUpdateOperationsInput | string
     senhaHash?: StringFieldUpdateOperationsInput | string
+    role?: EnumUserRoleFieldUpdateOperationsInput | $Enums.UserRole
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
   }
@@ -4792,64 +4981,114 @@ export namespace Prisma {
     email?: StringFieldUpdateOperationsInput | string
     id?: StringFieldUpdateOperationsInput | string
     senhaHash?: StringFieldUpdateOperationsInput | string
+    role?: EnumUserRoleFieldUpdateOperationsInput | $Enums.UserRole
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
   }
 
   export type camisasfutebolCreateInput = {
     id?: string
-    modelo: string
-    versao: string
-    tamanho: string
+    nome?: string
+    preco?: number
+    time?: string
+    descricao?: string
+    imagens?: camisasfutebolCreateimagensInput | string[]
+    modelo?: string
+    versao?: string
+    tamanho?: string
     ano?: number | null
+    createdAt?: Date | string
+    updatedAt?: Date | string
   }
 
   export type camisasfutebolUncheckedCreateInput = {
     id?: string
-    modelo: string
-    versao: string
-    tamanho: string
+    nome?: string
+    preco?: number
+    time?: string
+    descricao?: string
+    imagens?: camisasfutebolCreateimagensInput | string[]
+    modelo?: string
+    versao?: string
+    tamanho?: string
     ano?: number | null
+    createdAt?: Date | string
+    updatedAt?: Date | string
   }
 
   export type camisasfutebolUpdateInput = {
     id?: StringFieldUpdateOperationsInput | string
+    nome?: StringFieldUpdateOperationsInput | string
+    preco?: FloatFieldUpdateOperationsInput | number
+    time?: StringFieldUpdateOperationsInput | string
+    descricao?: StringFieldUpdateOperationsInput | string
+    imagens?: camisasfutebolUpdateimagensInput | string[]
     modelo?: StringFieldUpdateOperationsInput | string
     versao?: StringFieldUpdateOperationsInput | string
     tamanho?: StringFieldUpdateOperationsInput | string
     ano?: NullableIntFieldUpdateOperationsInput | number | null
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
   }
 
   export type camisasfutebolUncheckedUpdateInput = {
     id?: StringFieldUpdateOperationsInput | string
+    nome?: StringFieldUpdateOperationsInput | string
+    preco?: FloatFieldUpdateOperationsInput | number
+    time?: StringFieldUpdateOperationsInput | string
+    descricao?: StringFieldUpdateOperationsInput | string
+    imagens?: camisasfutebolUpdateimagensInput | string[]
     modelo?: StringFieldUpdateOperationsInput | string
     versao?: StringFieldUpdateOperationsInput | string
     tamanho?: StringFieldUpdateOperationsInput | string
     ano?: NullableIntFieldUpdateOperationsInput | number | null
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
   }
 
   export type camisasfutebolCreateManyInput = {
     id?: string
-    modelo: string
-    versao: string
-    tamanho: string
+    nome?: string
+    preco?: number
+    time?: string
+    descricao?: string
+    imagens?: camisasfutebolCreateimagensInput | string[]
+    modelo?: string
+    versao?: string
+    tamanho?: string
     ano?: number | null
+    createdAt?: Date | string
+    updatedAt?: Date | string
   }
 
   export type camisasfutebolUpdateManyMutationInput = {
     id?: StringFieldUpdateOperationsInput | string
+    nome?: StringFieldUpdateOperationsInput | string
+    preco?: FloatFieldUpdateOperationsInput | number
+    time?: StringFieldUpdateOperationsInput | string
+    descricao?: StringFieldUpdateOperationsInput | string
+    imagens?: camisasfutebolUpdateimagensInput | string[]
     modelo?: StringFieldUpdateOperationsInput | string
     versao?: StringFieldUpdateOperationsInput | string
     tamanho?: StringFieldUpdateOperationsInput | string
     ano?: NullableIntFieldUpdateOperationsInput | number | null
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
   }
 
   export type camisasfutebolUncheckedUpdateManyInput = {
     id?: StringFieldUpdateOperationsInput | string
+    nome?: StringFieldUpdateOperationsInput | string
+    preco?: FloatFieldUpdateOperationsInput | number
+    time?: StringFieldUpdateOperationsInput | string
+    descricao?: StringFieldUpdateOperationsInput | string
+    imagens?: camisasfutebolUpdateimagensInput | string[]
     modelo?: StringFieldUpdateOperationsInput | string
     versao?: StringFieldUpdateOperationsInput | string
     tamanho?: StringFieldUpdateOperationsInput | string
     ano?: NullableIntFieldUpdateOperationsInput | number | null
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
   }
 
   export type RequestLogCreateInput = {
@@ -4977,6 +5216,13 @@ export namespace Prisma {
     not?: NestedUuidFilter<$PrismaModel> | string
   }
 
+  export type EnumUserRoleFilter<$PrismaModel = never> = {
+    equals?: $Enums.UserRole | EnumUserRoleFieldRefInput<$PrismaModel>
+    in?: $Enums.UserRole[] | ListEnumUserRoleFieldRefInput<$PrismaModel>
+    notIn?: $Enums.UserRole[] | ListEnumUserRoleFieldRefInput<$PrismaModel>
+    not?: NestedEnumUserRoleFilter<$PrismaModel> | $Enums.UserRole
+  }
+
   export type DateTimeFilter<$PrismaModel = never> = {
     equals?: Date | string | DateTimeFieldRefInput<$PrismaModel>
     in?: Date[] | string[] | ListDateTimeFieldRefInput<$PrismaModel>
@@ -5009,6 +5255,7 @@ export namespace Prisma {
     email?: SortOrder
     id?: SortOrder
     senhaHash?: SortOrder
+    role?: SortOrder
     createdAt?: SortOrder
     updatedAt?: SortOrder
   }
@@ -5019,6 +5266,7 @@ export namespace Prisma {
     email?: SortOrder
     id?: SortOrder
     senhaHash?: SortOrder
+    role?: SortOrder
     createdAt?: SortOrder
     updatedAt?: SortOrder
   }
@@ -5029,6 +5277,7 @@ export namespace Prisma {
     email?: SortOrder
     id?: SortOrder
     senhaHash?: SortOrder
+    role?: SortOrder
     createdAt?: SortOrder
     updatedAt?: SortOrder
   }
@@ -5084,6 +5333,16 @@ export namespace Prisma {
     _max?: NestedStringFilter<$PrismaModel>
   }
 
+  export type EnumUserRoleWithAggregatesFilter<$PrismaModel = never> = {
+    equals?: $Enums.UserRole | EnumUserRoleFieldRefInput<$PrismaModel>
+    in?: $Enums.UserRole[] | ListEnumUserRoleFieldRefInput<$PrismaModel>
+    notIn?: $Enums.UserRole[] | ListEnumUserRoleFieldRefInput<$PrismaModel>
+    not?: NestedEnumUserRoleWithAggregatesFilter<$PrismaModel> | $Enums.UserRole
+    _count?: NestedIntFilter<$PrismaModel>
+    _min?: NestedEnumUserRoleFilter<$PrismaModel>
+    _max?: NestedEnumUserRoleFilter<$PrismaModel>
+  }
+
   export type DateTimeWithAggregatesFilter<$PrismaModel = never> = {
     equals?: Date | string | DateTimeFieldRefInput<$PrismaModel>
     in?: Date[] | string[] | ListDateTimeFieldRefInput<$PrismaModel>
@@ -5096,6 +5355,25 @@ export namespace Prisma {
     _count?: NestedIntFilter<$PrismaModel>
     _min?: NestedDateTimeFilter<$PrismaModel>
     _max?: NestedDateTimeFilter<$PrismaModel>
+  }
+
+  export type FloatFilter<$PrismaModel = never> = {
+    equals?: number | FloatFieldRefInput<$PrismaModel>
+    in?: number[] | ListFloatFieldRefInput<$PrismaModel>
+    notIn?: number[] | ListFloatFieldRefInput<$PrismaModel>
+    lt?: number | FloatFieldRefInput<$PrismaModel>
+    lte?: number | FloatFieldRefInput<$PrismaModel>
+    gt?: number | FloatFieldRefInput<$PrismaModel>
+    gte?: number | FloatFieldRefInput<$PrismaModel>
+    not?: NestedFloatFilter<$PrismaModel> | number
+  }
+
+  export type StringNullableListFilter<$PrismaModel = never> = {
+    equals?: string[] | ListStringFieldRefInput<$PrismaModel> | null
+    has?: string | StringFieldRefInput<$PrismaModel> | null
+    hasEvery?: string[] | ListStringFieldRefInput<$PrismaModel>
+    hasSome?: string[] | ListStringFieldRefInput<$PrismaModel>
+    isEmpty?: boolean
   }
 
   export type IntNullableFilter<$PrismaModel = never> = {
@@ -5111,34 +5389,71 @@ export namespace Prisma {
 
   export type camisasfutebolCountOrderByAggregateInput = {
     id?: SortOrder
+    nome?: SortOrder
+    preco?: SortOrder
+    time?: SortOrder
+    descricao?: SortOrder
+    imagens?: SortOrder
     modelo?: SortOrder
     versao?: SortOrder
     tamanho?: SortOrder
     ano?: SortOrder
+    createdAt?: SortOrder
+    updatedAt?: SortOrder
   }
 
   export type camisasfutebolAvgOrderByAggregateInput = {
+    preco?: SortOrder
     ano?: SortOrder
   }
 
   export type camisasfutebolMaxOrderByAggregateInput = {
     id?: SortOrder
+    nome?: SortOrder
+    preco?: SortOrder
+    time?: SortOrder
+    descricao?: SortOrder
     modelo?: SortOrder
     versao?: SortOrder
     tamanho?: SortOrder
     ano?: SortOrder
+    createdAt?: SortOrder
+    updatedAt?: SortOrder
   }
 
   export type camisasfutebolMinOrderByAggregateInput = {
     id?: SortOrder
+    nome?: SortOrder
+    preco?: SortOrder
+    time?: SortOrder
+    descricao?: SortOrder
     modelo?: SortOrder
     versao?: SortOrder
     tamanho?: SortOrder
     ano?: SortOrder
+    createdAt?: SortOrder
+    updatedAt?: SortOrder
   }
 
   export type camisasfutebolSumOrderByAggregateInput = {
+    preco?: SortOrder
     ano?: SortOrder
+  }
+
+  export type FloatWithAggregatesFilter<$PrismaModel = never> = {
+    equals?: number | FloatFieldRefInput<$PrismaModel>
+    in?: number[] | ListFloatFieldRefInput<$PrismaModel>
+    notIn?: number[] | ListFloatFieldRefInput<$PrismaModel>
+    lt?: number | FloatFieldRefInput<$PrismaModel>
+    lte?: number | FloatFieldRefInput<$PrismaModel>
+    gt?: number | FloatFieldRefInput<$PrismaModel>
+    gte?: number | FloatFieldRefInput<$PrismaModel>
+    not?: NestedFloatWithAggregatesFilter<$PrismaModel> | number
+    _count?: NestedIntFilter<$PrismaModel>
+    _avg?: NestedFloatFilter<$PrismaModel>
+    _sum?: NestedFloatFilter<$PrismaModel>
+    _min?: NestedFloatFilter<$PrismaModel>
+    _max?: NestedFloatFilter<$PrismaModel>
   }
 
   export type IntNullableWithAggregatesFilter<$PrismaModel = never> = {
@@ -5284,6 +5599,10 @@ export namespace Prisma {
     set?: string | null
   }
 
+  export type EnumUserRoleFieldUpdateOperationsInput = {
+    set?: $Enums.UserRole
+  }
+
   export type DateTimeFieldUpdateOperationsInput = {
     set?: Date | string
   }
@@ -5314,6 +5633,23 @@ export namespace Prisma {
     update?: RequestLogUpdateWithWhereUniqueWithoutUserInput | RequestLogUpdateWithWhereUniqueWithoutUserInput[]
     updateMany?: RequestLogUpdateManyWithWhereWithoutUserInput | RequestLogUpdateManyWithWhereWithoutUserInput[]
     deleteMany?: RequestLogScalarWhereInput | RequestLogScalarWhereInput[]
+  }
+
+  export type camisasfutebolCreateimagensInput = {
+    set: string[]
+  }
+
+  export type FloatFieldUpdateOperationsInput = {
+    set?: number
+    increment?: number
+    decrement?: number
+    multiply?: number
+    divide?: number
+  }
+
+  export type camisasfutebolUpdateimagensInput = {
+    set?: string[]
+    push?: string | string[]
   }
 
   export type NullableIntFieldUpdateOperationsInput = {
@@ -5385,6 +5721,13 @@ export namespace Prisma {
     gt?: string | StringFieldRefInput<$PrismaModel>
     gte?: string | StringFieldRefInput<$PrismaModel>
     not?: NestedUuidFilter<$PrismaModel> | string
+  }
+
+  export type NestedEnumUserRoleFilter<$PrismaModel = never> = {
+    equals?: $Enums.UserRole | EnumUserRoleFieldRefInput<$PrismaModel>
+    in?: $Enums.UserRole[] | ListEnumUserRoleFieldRefInput<$PrismaModel>
+    notIn?: $Enums.UserRole[] | ListEnumUserRoleFieldRefInput<$PrismaModel>
+    not?: NestedEnumUserRoleFilter<$PrismaModel> | $Enums.UserRole
   }
 
   export type NestedDateTimeFilter<$PrismaModel = never> = {
@@ -5468,6 +5811,16 @@ export namespace Prisma {
     _max?: NestedStringFilter<$PrismaModel>
   }
 
+  export type NestedEnumUserRoleWithAggregatesFilter<$PrismaModel = never> = {
+    equals?: $Enums.UserRole | EnumUserRoleFieldRefInput<$PrismaModel>
+    in?: $Enums.UserRole[] | ListEnumUserRoleFieldRefInput<$PrismaModel>
+    notIn?: $Enums.UserRole[] | ListEnumUserRoleFieldRefInput<$PrismaModel>
+    not?: NestedEnumUserRoleWithAggregatesFilter<$PrismaModel> | $Enums.UserRole
+    _count?: NestedIntFilter<$PrismaModel>
+    _min?: NestedEnumUserRoleFilter<$PrismaModel>
+    _max?: NestedEnumUserRoleFilter<$PrismaModel>
+  }
+
   export type NestedDateTimeWithAggregatesFilter<$PrismaModel = never> = {
     equals?: Date | string | DateTimeFieldRefInput<$PrismaModel>
     in?: Date[] | string[] | ListDateTimeFieldRefInput<$PrismaModel>
@@ -5480,6 +5833,33 @@ export namespace Prisma {
     _count?: NestedIntFilter<$PrismaModel>
     _min?: NestedDateTimeFilter<$PrismaModel>
     _max?: NestedDateTimeFilter<$PrismaModel>
+  }
+
+  export type NestedFloatFilter<$PrismaModel = never> = {
+    equals?: number | FloatFieldRefInput<$PrismaModel>
+    in?: number[] | ListFloatFieldRefInput<$PrismaModel>
+    notIn?: number[] | ListFloatFieldRefInput<$PrismaModel>
+    lt?: number | FloatFieldRefInput<$PrismaModel>
+    lte?: number | FloatFieldRefInput<$PrismaModel>
+    gt?: number | FloatFieldRefInput<$PrismaModel>
+    gte?: number | FloatFieldRefInput<$PrismaModel>
+    not?: NestedFloatFilter<$PrismaModel> | number
+  }
+
+  export type NestedFloatWithAggregatesFilter<$PrismaModel = never> = {
+    equals?: number | FloatFieldRefInput<$PrismaModel>
+    in?: number[] | ListFloatFieldRefInput<$PrismaModel>
+    notIn?: number[] | ListFloatFieldRefInput<$PrismaModel>
+    lt?: number | FloatFieldRefInput<$PrismaModel>
+    lte?: number | FloatFieldRefInput<$PrismaModel>
+    gt?: number | FloatFieldRefInput<$PrismaModel>
+    gte?: number | FloatFieldRefInput<$PrismaModel>
+    not?: NestedFloatWithAggregatesFilter<$PrismaModel> | number
+    _count?: NestedIntFilter<$PrismaModel>
+    _avg?: NestedFloatFilter<$PrismaModel>
+    _sum?: NestedFloatFilter<$PrismaModel>
+    _min?: NestedFloatFilter<$PrismaModel>
+    _max?: NestedFloatFilter<$PrismaModel>
   }
 
   export type NestedIntNullableWithAggregatesFilter<$PrismaModel = never> = {
@@ -5534,17 +5914,6 @@ export namespace Prisma {
     _sum?: NestedIntFilter<$PrismaModel>
     _min?: NestedIntFilter<$PrismaModel>
     _max?: NestedIntFilter<$PrismaModel>
-  }
-
-  export type NestedFloatFilter<$PrismaModel = never> = {
-    equals?: number | FloatFieldRefInput<$PrismaModel>
-    in?: number[] | ListFloatFieldRefInput<$PrismaModel>
-    notIn?: number[] | ListFloatFieldRefInput<$PrismaModel>
-    lt?: number | FloatFieldRefInput<$PrismaModel>
-    lte?: number | FloatFieldRefInput<$PrismaModel>
-    gt?: number | FloatFieldRefInput<$PrismaModel>
-    gte?: number | FloatFieldRefInput<$PrismaModel>
-    not?: NestedFloatFilter<$PrismaModel> | number
   }
 
   export type NestedUuidNullableWithAggregatesFilter<$PrismaModel = never> = {
@@ -5630,6 +5999,7 @@ export namespace Prisma {
     email: string
     id?: string
     senhaHash?: string
+    role?: $Enums.UserRole
     createdAt?: Date | string
     updatedAt?: Date | string
   }
@@ -5640,6 +6010,7 @@ export namespace Prisma {
     email: string
     id?: string
     senhaHash?: string
+    role?: $Enums.UserRole
     createdAt?: Date | string
     updatedAt?: Date | string
   }
@@ -5666,6 +6037,7 @@ export namespace Prisma {
     email?: StringFieldUpdateOperationsInput | string
     id?: StringFieldUpdateOperationsInput | string
     senhaHash?: StringFieldUpdateOperationsInput | string
+    role?: EnumUserRoleFieldUpdateOperationsInput | $Enums.UserRole
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
   }
@@ -5676,6 +6048,7 @@ export namespace Prisma {
     email?: StringFieldUpdateOperationsInput | string
     id?: StringFieldUpdateOperationsInput | string
     senhaHash?: StringFieldUpdateOperationsInput | string
+    role?: EnumUserRoleFieldUpdateOperationsInput | $Enums.UserRole
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
   }

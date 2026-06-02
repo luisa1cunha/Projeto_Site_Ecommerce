@@ -7,23 +7,36 @@ datasource db {
   provider = "postgresql"
 }
 
+enum UserRole {
+  USER
+  ADMIN
+}
+
 model User {
   nome        String
   sobrenome   String?
   email       String       @unique
   id          String       @id @default(dbgenerated("gen_random_uuid()")) @db.Uuid
   senhaHash   String       @default("")
+  role        UserRole     @default(USER)
   createdAt   DateTime     @default(now())
   updatedAt   DateTime     @default(now()) @updatedAt
   requestLogs RequestLog[]
 }
 
 model camisasfutebol {
-  id      String @id @default(dbgenerated("gen_random_uuid()")) @db.Uuid
-  modelo  String
-  versao  String
-  tamanho String
-  ano     Int?
+  id        String   @id @default(dbgenerated("gen_random_uuid()")) @db.Uuid
+  nome      String   @default("")
+  preco     Float    @default(0)
+  time      String   @default("")
+  descricao String   @default("")
+  imagens   String[] @default([])
+  modelo    String   @default("")
+  versao    String   @default("")
+  tamanho   String   @default("")
+  ano       Int?
+  createdAt DateTime @default(now())
+  updatedAt DateTime @default(now()) @updatedAt
 }
 
 model RequestLog {

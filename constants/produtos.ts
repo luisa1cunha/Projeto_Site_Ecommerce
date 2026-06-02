@@ -1,38 +1,49 @@
 export interface Produto {
-  id: number;
+  id: string;
   nome: string;
   preco: number;
-  imagem: string;
   time: string;
+  descricao: string;
+  imagens: string[];
 }
 
 export const produtos: Produto[] = [
   {
-    id: 1,
-    nome: "Camiseta 1",
+    id: "local-1",
+    nome: "Rubro Negra 2026",
     preco: 299.9,
-    imagem: "https://via.placeholder.com/300",
-    time: "Time 1",
+    time: "Flamengo",
+    descricao: "Camisa titular com tecido leve e caimento esportivo.",
+    imagens: [
+      "/images/camisas/camisa-1.svg",
+      "/images/camisas/camisa-1-alt.svg",
+    ],
   },
   {
-    id: 2,
-    nome: "Camiseta 2",
-    preco: 89.9,
-    imagem: "https://via.placeholder.com/300",
-    time: "Time 2",
+    id: "local-2",
+    nome: "Tricolor Classica",
+    preco: 239.9,
+    time: "Fluminense",
+    descricao: "Versao classica com gola polo e escudo bordado.",
+    imagens: [
+      "/images/camisas/camisa-2.svg",
+      "/images/camisas/camisa-2-alt.svg",
+    ],
   },
   {
-    id: 3,
-    nome: "Camiseta 3",
+    id: "local-3",
+    nome: "Alvinegra Retro",
     preco: 199.9,
-    imagem: "https://via.placeholder.com/300",
-    time: "Time 3",
+    time: "Santos",
+    descricao: "Edicao retro inspirada na campanha historica.",
+    imagens: ["/images/camisas/camisa-3.svg"],
   },
   {
-    id: 4,
-    nome: "Camiseta 4",
+    id: "local-4",
+    nome: "Azul Royal 26",
     preco: 149.9,
-    imagem: "https://via.placeholder.com/300",
-    time: "Time 4",
+    time: "Cruzeiro",
+    descricao: "Modelo de treino com alta respirabilidade.",
+    imagens: ["/images/camisas/camisa-4.svg"],
   },
 ];
