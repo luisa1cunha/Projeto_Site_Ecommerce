@@ -7,7 +7,8 @@
   "scripts": {
     "dev": "nodemon server.js",
     "promover-admin": "node src/scripts/promover-admin.js",
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "node --experimental-vm-modules ./node_modules/jest/bin/jest.js --runInBand",
+    "test:coverage": "node --experimental-vm-modules ./node_modules/jest/bin/jest.js --runInBand --coverage"
   },
   "keywords": [],
   "author": "",
@@ -24,7 +25,9 @@
     "pg": "^8.20.0"
   },
   "devDependencies": {
+    "jest": "^30.2.0",
     "nodemon": "^3.1.14",
-    "prisma": "^7.5.0"
+    "prisma": "^7.5.0",
+    "supertest": "^7.1.4"
   }
 }
